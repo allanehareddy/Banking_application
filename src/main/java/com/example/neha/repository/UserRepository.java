@@ -1,2 +1,7 @@
-package com.example.neha.repository;public interface UserRepository {
+package com.example.neha.repository;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface UserRepository extends JpaRepository {
+
 }
