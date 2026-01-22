@@ -2,6 +2,7 @@ package com.example.neha.service;
 
 import com.example.neha.dto.AccountInfo;
 import com.example.neha.dto.BankResponse;
+import com.example.neha.dto.EmailDetails;
 import com.example.neha.dto.UserRequest;
 import com.example.neha.entity.user;
 import com.example.neha.repository.UserRepository;
@@ -16,10 +17,12 @@ import java.math.BigDecimal;
 public class UserServiceImpl implements UserService{
     @Autowired
     UserRepository userRepository;
+    @Autowired
+    EmailService emailService;
 
     @Override
     public  BankResponse createAccount(UserRequest userRequest) {
-        if (userRepository.existsByEmail(UserRequest.getEmail())) {
+        if (userRepository.existsByEmail(userRequest.getEmail())) {
             return BankResponse.builder()
                     .responseCode(AccountUtils.ACCOUNT_EXISTS_CODE)
                     .responseMessage(AccountUtils.ACCOUNT_EXISTS_MESSAGE)
@@ -41,7 +44,19 @@ public class UserServiceImpl implements UserService{
                 .build();
 
         user savedUser = userRepository.save(newuser);
-         return BankResponse.builder()
+        // Send email Alert
+        EmailDetails emailDetails = EmailDetails.builder()
+                .recipient(savedUser.getEmail())
+                .subject("ACCOUNT CREATION")
+                .messageBody(
+                        "Congratulations! Your Account has been Successfully Created.\n\n" +
+                                "Account Name: " + savedUser.getFirstName() + " " + savedUser.getLastName()
+                )
+                .build();
+
+        emailService.sendEmailAlert(emailDetails);
+
+        return BankResponse.builder()
                 .responseCode(AccountUtils.ACCOUNT_CREATION_SUCCESS)
                 .responseMessage(AccountUtils.ACCOUNT_CREATION_MESSAGE)
                 .accountInfo(AccountInfo.builder()
