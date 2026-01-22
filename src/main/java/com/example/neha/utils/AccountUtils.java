@@ -3,7 +3,8 @@ package com.example.neha.utils;
 import java.time.Year;
 
 public  class AccountUtils {
-
+   public static final String ACCOUNT_CREATION_SUCCESS="002";
+    public static final String ACCOUNT_CREATION_MESSAGE="account has been created";
     public static final String ACCOUNT_EXISTS_CODE="001";
     public static final String ACCOUNT_EXISTS_MESSAGE="This user already has an account";
     public static String generateAccountNumber(){

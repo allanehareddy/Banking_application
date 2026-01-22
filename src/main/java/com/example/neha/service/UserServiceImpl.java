@@ -1,5 +1,6 @@
 package com.example.neha.service;
 
+import com.example.neha.dto.AccountInfo;
 import com.example.neha.dto.BankResponse;
 import com.example.neha.dto.UserRequest;
 import com.example.neha.entity.user;
@@ -17,7 +18,7 @@ public class UserServiceImpl implements UserService{
     UserRepository userRepository;
 
     @Override
-    public BankResponse createAccount(UserRequest userRequest) {
+    public  BankResponse createAccount(UserRequest userRequest) {
         if (userRepository.existsByEmail(UserRequest.getEmail())) {
             return BankResponse.builder()
                     .responseCode(AccountUtils.ACCOUNT_EXISTS_CODE)
@@ -38,6 +39,21 @@ public class UserServiceImpl implements UserService{
                 .phoneNumber(userRequest.getPhoneNumber())
                 .status("ACTIVE")
                 .build();
-        return null;
+
+        user savedUser = userRepository.save(newuser);
+         return BankResponse.builder()
+                .responseCode(AccountUtils.ACCOUNT_CREATION_SUCCESS)
+                .responseMessage(AccountUtils.ACCOUNT_CREATION_MESSAGE)
+                .accountInfo(AccountInfo.builder()
+                        .accountBalance(savedUser.getAccountBalance())
+                        .accountNumber(savedUser.getAccountNumber())
+                        .accountName(
+                                savedUser.getFirstName() + " " +
+                                        savedUser.getLastName() + " " +
+                                        savedUser.getOtherName()
+                        )
+                        .build()
+                )
+                .build();
     }
 }

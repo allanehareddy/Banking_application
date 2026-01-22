@@ -4,5 +4,5 @@ import com.example.neha.dto.BankResponse;
 import com.example.neha.dto.UserRequest;
 
 public interface UserService {
-    BankResponse createAccount (UserRequest userRequest);
+     BankResponse createAccount(UserRequest userRequest);
 }

@@ -72,7 +72,7 @@ public class UserRequest {
         this.stateOfOrigin = stateOfOrigin;
     }
 
-    public static String getEmail() {
+    public  String getEmail() {
         return email;
     }
 
