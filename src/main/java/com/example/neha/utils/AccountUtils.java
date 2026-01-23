@@ -5,7 +5,14 @@ import java.time.Year;
 public  class AccountUtils {
    public static final String ACCOUNT_CREATION_SUCCESS="002";
     public static final String ACCOUNT_CREATION_MESSAGE="account has been created";
+
     public static final String ACCOUNT_EXISTS_CODE="001";
+    public static final String ACCOUNT_NOTEXISTS_CODE="002";
+    public static final String ACCOUNT_NOTEXISTS_MESSAGE="We can create new account";
+
+    public static final String ACCOUNT_FOUND_CODE="003";
+    public static final String ACCOUNT_FOUND_MESSAGE="We found your account";
+
     public static final String ACCOUNT_EXISTS_MESSAGE="This user already has an account";
     public static String generateAccountNumber(){
 
