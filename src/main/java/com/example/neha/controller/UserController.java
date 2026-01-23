@@ -2,6 +2,7 @@ package com.example.neha.controller;
 
 
 import com.example.neha.dto.BankResponse;
+import com.example.neha.dto.CreditDebitRequest;
 import com.example.neha.dto.UserRequest;
 import com.example.neha.service.EnquiryRequest;
 import com.example.neha.service.UserService;
@@ -25,4 +26,13 @@ public class UserController {
     public String nameEnquiry(@RequestBody EnquiryRequest request){
         return userservice.nameEnquiry(request);
     }
+    @PostMapping("credit")
+    public BankResponse creditAccount(@RequestBody CreditDebitRequest request){
+        return userservice.creditAccount(request);
+    }
+    @PostMapping("debit")
+    public BankResponse debitAccount(@RequestBody CreditDebitRequest request){
+        return userservice.debitAccount(request);
+    }
+
 }
