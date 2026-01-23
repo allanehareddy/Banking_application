@@ -9,5 +9,5 @@ public interface UserService {
      BankResponse balanceEnquiry(EnquiryRequest request);
      String nameEnquiry(EnquiryRequest request);
 
-     BankResponse creditaccount(CreditDebitRequest request);
+     BankResponse creditAccount(CreditDebitRequest request);
 }
