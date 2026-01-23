@@ -20,6 +20,9 @@ public  class AccountUtils {
     public static final String ACCOUNT_FOUND_MESSAGE="We found your account";
 
     public static final String ACCOUNT_EXISTS_MESSAGE="This user already has an account";
+    public static final String TRANSFER_SUCCESS_CODE = "006";
+    public static final String TRANSFER_SUCCESS_MESSAGE = "successfully transferred";
+
     public static String generateAccountNumber(){
 
         Year CurrentYear =  Year.now();

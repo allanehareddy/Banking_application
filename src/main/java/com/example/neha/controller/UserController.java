@@ -3,6 +3,7 @@ package com.example.neha.controller;
 
 import com.example.neha.dto.BankResponse;
 import com.example.neha.dto.CreditDebitRequest;
+import com.example.neha.dto.TransferRequest;
 import com.example.neha.dto.UserRequest;
 import com.example.neha.service.EnquiryRequest;
 import com.example.neha.service.UserService;
@@ -34,5 +35,8 @@ public class UserController {
     public BankResponse debitAccount(@RequestBody CreditDebitRequest request){
         return userservice.debitAccount(request);
     }
-
+    @PostMapping("transfer")
+    public BankResponse transfer(@RequestBody TransferRequest request){
+        return userservice.Transfer(request);
+    }
 }

@@ -2,6 +2,7 @@ package com.example.neha.service;
 
 import com.example.neha.dto.BankResponse;
 import com.example.neha.dto.CreditDebitRequest;
+import com.example.neha.dto.TransferRequest;
 import com.example.neha.dto.UserRequest;
 
 public interface UserService {
@@ -12,5 +13,6 @@ public interface UserService {
 
      BankResponse creditAccount(CreditDebitRequest request);
      BankResponse debitAccount(CreditDebitRequest request);
+     BankResponse Transfer(TransferRequest request);
 
 }
